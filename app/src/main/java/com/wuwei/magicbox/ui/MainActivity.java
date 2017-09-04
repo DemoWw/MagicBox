@@ -19,8 +19,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textView.setText("123456");
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00ff00")));
+//        textView.setText("123456");
+//        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00ff00")));
 
         // TODO: table layout...
 
