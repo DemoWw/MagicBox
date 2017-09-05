@@ -15,7 +15,7 @@ import com.wuwei.magicbox.magicbox.R;
 import com.wuwei.magicbox.util.LogUtils;
 
 /**
- * Created by tarena on 2017/9/4.
+ * Created by wuwei on 2017/9/4.
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -37,12 +37,12 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        LogUtils.w(toolbar.toString());
+
         setSupportActionBar(toolbar);
         if (toolbar != null) {
             actionBar = getSupportActionBar();
         }
-
-        init();
     }
 
     @Override
@@ -50,7 +50,5 @@ public abstract class BaseActivity extends AppCompatActivity {
         ActivityManager.remove(this);
         super.onDestroy();
     }
-
-    protected abstract void init();
 
 }

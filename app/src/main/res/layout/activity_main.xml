@@ -4,15 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:id="@+id/layout_root"
     tools:context="com.wuwei.magicbox.ui.MainActivity">
 
-    <include layout="@layout/toolbar_include"/>
-
-    <TextView
-        android:id="@+id/text"
+    <!-- AppBarLayout相当于垂直的线性布局 -->
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello World!"
-        android:layout_gravity="center" />
+        android:layout_height="wrap_content">
 
+        <include layout="@layout/toolbar_include"/>
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab_layout"
+            app:tabTextAppearance="@style/TabLayoutText"
+            >
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
+
+
+
+    <!--
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+    </android.support.v4.widget.NestedScrollView>
+
+    -->
 </android.support.design.widget.CoordinatorLayout>

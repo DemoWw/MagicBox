@@ -5,10 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:minHeight="?attr/actionBarSize"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:id="@+id/tb_include"
-    app:titleTextColor="#ffffff"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:title="@string/app_name"
     app:navigationIcon="@mipmap/ic_launcher"
-
-    />
+    app:layout_scrollFlags="scroll|enterAlways"
+    >
+</android.support.v7.widget.Toolbar>
