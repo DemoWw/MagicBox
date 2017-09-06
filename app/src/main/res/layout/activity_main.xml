@@ -12,7 +12,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:id="@+id/layout_root"
         tools:context="com.wuwei.magicbox.ui.MainActivity">
 
@@ -38,10 +37,24 @@
             android:id="@+id/view_pager_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             >
 
         </android.support.v4.view.ViewPager>
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_scrollFlags="scroll|enterAlways"
+                >
+            </LinearLayout>
+
+        </android.support.design.widget.AppBarLayout>
 
         <!--
 

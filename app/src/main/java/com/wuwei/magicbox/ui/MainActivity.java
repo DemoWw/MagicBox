@@ -73,6 +73,8 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        // TODO: 底部layout滑动进入与消失
+
     }
 
     @Override
