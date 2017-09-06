@@ -1,18 +1,24 @@
 package com.wuwei.magicbox.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.wuwei.magicbox.magicbox.R;
@@ -25,7 +31,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener {
+public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener,
+        NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.layout_root)
     CoordinatorLayout coordinatorLayout;
@@ -33,6 +40,10 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     TabLayout tabLayout;
     @BindView(R.id.view_pager_main)
     ViewPager viewPager;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.nav_view)
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +65,26 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         tabLayout.getTabAt(1).setText("Android");
         tabLayout.getTabAt(2).setText("IOS");
 
+        navigationView.setItemIconTintList(null);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,
+                toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.wallet:
+
+                break;
+        }
+
+        return true;
     }
 
     private class InnerFragmentPagerAdapter extends FragmentPagerAdapter {

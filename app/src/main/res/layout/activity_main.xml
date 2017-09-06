@@ -1,49 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- 设置fitsSystemWindows=true会为view添加一个状态栏高度的padding -->
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    android:id="@+id/layout_root"
-    tools:context="com.wuwei.magicbox.ui.MainActivity">
-
-    <!-- AppBarLayout相当于垂直的线性布局 -->
-    <android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
 
-        <include layout="@layout/toolbar_include"/>
+        android:id="@+id/layout_root"
+        tools:context="com.wuwei.magicbox.ui.MainActivity">
 
-        <android.support.design.widget.TabLayout
+        <!-- AppBarLayout相当于垂直的线性布局 -->
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/toolbar_include"/>
+
+            <android.support.design.widget.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tab_layout"
+                app:tabTextAppearance="@style/TabLayoutText"
+                >
+
+            </android.support.design.widget.TabLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tab_layout"
-            app:tabTextAppearance="@style/TabLayoutText"
+
             >
 
-        </android.support.design.widget.TabLayout>
+        </android.support.v4.view.ViewPager>
 
-    </android.support.design.widget.AppBarLayout>
+        <!--
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
 
-    </android.support.v4.view.ViewPager>
+        </android.support.v4.widget.NestedScrollView>
 
+        -->
+    </android.support.design.widget.CoordinatorLayout>
 
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
 
-    <!--
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_drawer_layout"
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:menu="@menu/menu_drawer"
+        app:itemTextColor="@color/itemTextColor"
 
-    </android.support.v4.widget.NestedScrollView>
+        />
 
-    -->
-</android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>
