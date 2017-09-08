@@ -7,12 +7,16 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.wuwei.magicbox.entity.Fruit;
 import com.wuwei.magicbox.magicbox.R;
+import com.wuwei.magicbox.ui.MainActivity;
+import com.wuwei.magicbox.ui.detector.RecyclerViewScrollDetector;
 import com.wuwei.magicbox.ui.adapter.FruitAdapter;
+import com.wuwei.magicbox.ui.detector.ViewScrollDetector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +36,10 @@ public class Fragment01 extends Fragment {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    List<Fruit> fruits = new ArrayList<>();
-    FruitAdapter adapter;
+    private List<Fruit> fruits = new ArrayList<>();
+    private FruitAdapter adapter;
+
+    private MainActivity mainActivity;
 
     @Nullable
     @Override
@@ -41,6 +47,8 @@ public class Fragment01 extends Fragment {
         View view = inflater.inflate(R.layout.fragment01, null);
 
         ButterKnife.bind(this, view);
+
+        mainActivity = (MainActivity) getActivity();
 
         refreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 R.color.colorAccent,
@@ -59,10 +67,23 @@ public class Fragment01 extends Fragment {
         initialFruits();
 
         adapter = new FruitAdapter();
-        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+        final StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         adapter.addFruits(fruits);
+
+
+        recyclerView.setOnTouchListener(new ViewScrollDetector() {
+            @Override
+            public void onScrollingUp() {
+                mainActivity.setBottomVisibility(false);
+            }
+
+            @Override
+            public void onScrollingDown() {
+                mainActivity.setBottomVisibility(true);
+            }
+        });
 
         return view;
     }

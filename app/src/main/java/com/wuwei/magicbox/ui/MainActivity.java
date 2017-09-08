@@ -1,10 +1,8 @@
 package com.wuwei.magicbox.ui;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -19,16 +17,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.wuwei.magicbox.magicbox.R;
 import com.wuwei.magicbox.ui.fragment.Fragment01;
 import com.wuwei.magicbox.ui.fragment.Fragment02;
 import com.wuwei.magicbox.ui.fragment.Fragment03;
-import com.wuwei.magicbox.util.LogUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener,
@@ -44,6 +43,12 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     DrawerLayout drawerLayout;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
+    @BindView(R.id.linear_bottom)
+    LinearLayout linearBottom;
+
+    private Animation animationIn;
+
+    private Animation animationOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +78,8 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        // TODO: 底部layout滑动进入与消失
+        animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
+        animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
 
     }
 
@@ -120,12 +126,14 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         }
     }
 
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
 
         switch (item.getItemId()) {
             case R.id.action_add:
                 Snackbar.make(coordinatorLayout, "its a snack bar!", Snackbar.LENGTH_SHORT).setAction("action",null).show();
+
                 break;
             default:
                 break;
@@ -139,6 +147,28 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return true;
+    }
+
+    public void setBottomVisibility(boolean isShow) {
+
+        if (isShow) {
+
+
+
+
+            if (linearBottom.getVisibility() != View.VISIBLE) {
+
+                linearBottom.startAnimation(animationIn);
+                linearBottom.setVisibility(View.VISIBLE);
+            }
+        } else {
+            linearBottom.setAnimation(animationOut);
+            animationOut.start();
+            if (linearBottom.getVisibility() == View.VISIBLE) {
+                linearBottom.startAnimation(animationOut);
+                linearBottom.setVisibility(View.GONE);
+            }
+        }
     }
 
 }

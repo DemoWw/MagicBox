@@ -37,24 +37,25 @@
             android:id="@+id/view_pager_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
 
         </android.support.v4.view.ViewPager>
 
-        <android.support.design.widget.AppBarLayout
+        <LinearLayout
+            android:id="@+id/linear_bottom"
+            android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:layout_gravity="bottom"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:orientation="horizontal"
+            android:background="@color/colorAccent"
+            android:elevation="10dp"
+            android:outlineProvider="bounds"
+            android:layout_marginBottom="30dp"
             >
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|enterAlways"
-                >
-            </LinearLayout>
-
-        </android.support.design.widget.AppBarLayout>
 
         <!--
 
