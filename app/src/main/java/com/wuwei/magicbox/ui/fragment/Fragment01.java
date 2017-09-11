@@ -73,17 +73,17 @@ public class Fragment01 extends Fragment {
         adapter.addFruits(fruits);
 
 
-        recyclerView.setOnTouchListener(new ViewScrollDetector() {
-            @Override
-            public void onScrollingUp() {
-                mainActivity.setBottomVisibility(false);
-            }
-
-            @Override
-            public void onScrollingDown() {
-                mainActivity.setBottomVisibility(true);
-            }
-        });
+//        recyclerView.setOnTouchListener(new ViewScrollDetector() {
+//            @Override
+//            public void onScrollingUp() {
+//                mainActivity.setBottomVisibility(false);
+//            }
+//
+//            @Override
+//            public void onScrollingDown() {
+//                mainActivity.setBottomVisibility(true);
+//            }
+//        });
 
         return view;
     }

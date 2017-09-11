@@ -1,8 +1,10 @@
 package com.wuwei.magicbox.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -21,6 +23,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.wuwei.magicbox.magicbox.R;
 import com.wuwei.magicbox.ui.fragment.Fragment01;
@@ -43,8 +46,10 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     DrawerLayout drawerLayout;
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-    @BindView(R.id.linear_bottom)
-    LinearLayout linearBottom;
+//    @BindView(R.id.linear_bottom)
+//    LinearLayout linearBottom;
+    @BindView(R.id.bottom_navigation)
+    BottomNavigationView bottomNavigationView;
 
     private Animation animationIn;
 
@@ -78,8 +83,11 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
-        animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
+        bottomNavigationView.setItemIconTintList(null);
+
+//        animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
+//        animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
+
 
     }
 
@@ -149,26 +157,27 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         return true;
     }
 
-    public void setBottomVisibility(boolean isShow) {
+//    public void setBottomVisibility(boolean isShow) {
+//
+//        if (isShow) {
+//
+//            if (linearBottom.getVisibility() != View.VISIBLE) {
+//
+//                linearBottom.startAnimation(animationIn);
+//                linearBottom.setVisibility(View.VISIBLE);
+//            }
+//        } else {
+//            linearBottom.setAnimation(animationOut);
+//            animationOut.start();
+//            if (linearBottom.getVisibility() == View.VISIBLE) {
+//                linearBottom.startAnimation(animationOut);
+//                linearBottom.setVisibility(View.GONE);
+//            }
+//        }
+//    }
 
-        if (isShow) {
-
-
-
-
-            if (linearBottom.getVisibility() != View.VISIBLE) {
-
-                linearBottom.startAnimation(animationIn);
-                linearBottom.setVisibility(View.VISIBLE);
-            }
-        } else {
-            linearBottom.setAnimation(animationOut);
-            animationOut.start();
-            if (linearBottom.getVisibility() == View.VISIBLE) {
-                linearBottom.startAnimation(animationOut);
-                linearBottom.setVisibility(View.GONE);
-            }
-        }
+    public void btnClick(View view) {
+        Toast.makeText(this,"123",Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -42,6 +42,20 @@
 
         </android.support.v4.view.ViewPager>
 
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:menu="@menu/menu_bottom"
+            app:itemTextColor="@color/itemTextColor"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:background="@color/colorAccent"
+            >
+
+        </android.support.design.widget.BottomNavigationView>
+
+        <!--
         <LinearLayout
             android:id="@+id/linear_bottom"
             android:layout_gravity="bottom"
@@ -55,7 +69,7 @@
             android:layout_marginBottom="30dp"
             >
         </LinearLayout>
-
+        -->
 
         <!--
 
