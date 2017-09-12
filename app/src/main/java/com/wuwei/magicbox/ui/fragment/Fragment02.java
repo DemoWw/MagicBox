@@ -27,7 +27,7 @@ public class Fragment02 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment02, null);
+        View view = inflater.inflate(R.layout.fragment02, container, false);
 
         //MainActivity mainActivity = (MainActivity) getActivity();
         //mainActivity.btnClick(null);

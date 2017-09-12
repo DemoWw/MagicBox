@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -25,6 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.ashokvarma.bottomnavigation.BottomNavigationBar;
+import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.wuwei.magicbox.magicbox.R;
 import com.wuwei.magicbox.ui.fragment.Fragment01;
 import com.wuwei.magicbox.ui.fragment.Fragment02;
@@ -49,7 +52,8 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 //    @BindView(R.id.linear_bottom)
 //    LinearLayout linearBottom;
     @BindView(R.id.bottom_navigation)
-    BottomNavigationView bottomNavigationView;
+    BottomNavigationBar bottomNavigationView;
+
 
     private Animation animationIn;
 
@@ -83,11 +87,15 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        bottomNavigationView.setItemIconTintList(null);
+        bottomNavigationView.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "首页"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "资讯")/*.setActiveColorResource(R.color.colorAccent)*/)
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "音乐")/*.setActiveColorResource(R.color.colorPrimary)*/)
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "我")/*.setActiveColorResource(R.color.yellow)*/)
+                .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
+                .initialise();
 
 //        animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
 //        animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
-
 
     }
 
