@@ -72,11 +72,18 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
+
+        replaceFragment(new fragmentBottom01());
+
+    }
+
+    private void initView() {
         // actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00ff00")));
 
-        tabLayout.addTab(tabLayout.newTab().setText("首页"));
-        tabLayout.addTab(tabLayout.newTab().setText("Android"));
-        tabLayout.addTab(tabLayout.newTab().setText("IOS"));
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
+        tabLayout.addTab(tabLayout.newTab());
 
         toolbar.setOnMenuItemClickListener(this);
 
@@ -95,10 +102,8 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .initialise();
 
-//        animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
-//        animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
-
-        replaceFragment(new fragmentBottom01());
+        //animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
+        //animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
 
     }
 
