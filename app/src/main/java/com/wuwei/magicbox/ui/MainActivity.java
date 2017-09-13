@@ -13,6 +13,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -32,6 +34,7 @@ import com.wuwei.magicbox.magicbox.R;
 import com.wuwei.magicbox.ui.fragment.Fragment01;
 import com.wuwei.magicbox.ui.fragment.Fragment02;
 import com.wuwei.magicbox.ui.fragment.Fragment03;
+import com.wuwei.magicbox.ui.fragment.fragmentBottom01;
 
 import butterknife.BindView;
 
@@ -41,23 +44,28 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
     @BindView(R.id.layout_root)
     CoordinatorLayout coordinatorLayout;
+
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
-    @BindView(R.id.view_pager_main)
-    ViewPager viewPager;
+
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-//    @BindView(R.id.linear_bottom)
-//    LinearLayout linearBottom;
+
     @BindView(R.id.bottom_navigation)
     BottomNavigationBar bottomNavigationView;
 
+//    @BindView(R.id.fl_main_container)
+//    FrameLayout mFlContainer;
 
-    private Animation animationIn;
+//    @BindView(R.id.linear_bottom)
+//    LinearLayout linearBottom;
 
-    private Animation animationOut;
+//    private Animation animationIn;
+//
+//    private Animation animationOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +79,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         tabLayout.addTab(tabLayout.newTab().setText("IOS"));
 
         toolbar.setOnMenuItemClickListener(this);
-
-        viewPager.setAdapter(new InnerFragmentPagerAdapter(getSupportFragmentManager()));
-        tabLayout.setupWithViewPager(viewPager);
-
-        tabLayout.getTabAt(0).setText("首页");
-        tabLayout.getTabAt(1).setText("Android");
-        tabLayout.getTabAt(2).setText("IOS");
 
         navigationView.setItemIconTintList(null);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,
@@ -97,6 +98,16 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 //        animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
 //        animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
 
+        replaceFragment(new fragmentBottom01());
+
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fl_main_container, fragment);
+        //transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
@@ -109,37 +120,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         }
 
         return true;
-    }
-
-    private class InnerFragmentPagerAdapter extends FragmentPagerAdapter {
-
-        public InnerFragmentPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            Fragment fragment = null;
-            switch (position) {
-                case 0:
-                    fragment = new Fragment01();
-                    break;
-                case 1:
-                    fragment = new Fragment02();
-                    break;
-                case 2:
-                    fragment = new Fragment03();
-                    break;
-                default:
-                    break;
-            }
-            return fragment;
-        }
-
-        @Override
-        public int getCount() {
-            return 3;
-        }
     }
 
 
@@ -186,6 +166,10 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
     public void btnClick(View view) {
         Toast.makeText(this,"123",Toast.LENGTH_SHORT).show();
+    }
+
+    public TabLayout getTabLayout() {
+        return tabLayout;
     }
 
 }

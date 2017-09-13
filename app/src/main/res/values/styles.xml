@@ -17,6 +17,8 @@
     <!-- 用于修改TabLayout默认的字体大小写显示 -->
     <style name="TabLayoutText" parent="TextAppearance.AppCompat">
         <item name="android:textAllCaps">false</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

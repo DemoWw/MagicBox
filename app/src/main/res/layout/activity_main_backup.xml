@@ -19,9 +19,7 @@
         <!-- AppBarLayout相当于垂直的线性布局 -->
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            >
+            android:layout_height="wrap_content">
 
             <include layout="@layout/toolbar_include"/>
 
@@ -37,13 +35,26 @@
 
         </android.support.design.widget.AppBarLayout>
 
-
-        <FrameLayout
-            android:id="@+id/fl_main_container"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager_main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
 
+        </android.support.v4.view.ViewPager>
+
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+        </LinearLayout>
+        -->
 
         <com.ashokvarma.bottomnavigation.BottomNavigationBar
             android:id="@+id/bottom_navigation"
@@ -55,6 +66,33 @@
             >
         </com.ashokvarma.bottomnavigation.BottomNavigationBar>
 
+        <!--
+        <LinearLayout
+            android:id="@+id/linear_bottom"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:orientation="horizontal"
+            android:background="@color/colorAccent"
+            android:elevation="10dp"
+            android:outlineProvider="bounds"
+            android:layout_marginBottom="30dp"
+            >
+        </LinearLayout>
+        -->
+
+        <!--
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+        </android.support.v4.widget.NestedScrollView>
+
+        -->
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
