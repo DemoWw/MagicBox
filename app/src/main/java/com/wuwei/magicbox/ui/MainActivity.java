@@ -1,46 +1,37 @@
 package com.wuwei.magicbox.ui;
 
-import android.content.Intent;
+import android.app.Activity;
+import android.app.Service;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.wuwei.magicbox.magicbox.R;
-import com.wuwei.magicbox.ui.fragment.Fragment01;
-import com.wuwei.magicbox.ui.fragment.Fragment02;
-import com.wuwei.magicbox.ui.fragment.Fragment03;
-import com.wuwei.magicbox.ui.fragment.fragmentBottom01;
+import com.wuwei.magicbox.ui.fragment.FragmentBottom01;
+import com.wuwei.magicbox.ui.fragment.FragmentBottom02;
+import com.wuwei.magicbox.ui.fragment.FragmentBottom03;
+import com.wuwei.magicbox.ui.fragment.FragmentBottom04;
 
 import butterknife.BindView;
 
 
 public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener,
-        NavigationView.OnNavigationItemSelectedListener {
+        NavigationView.OnNavigationItemSelectedListener, BottomNavigationBar.OnTabSelectedListener {
 
     @BindView(R.id.layout_root)
     CoordinatorLayout coordinatorLayout;
@@ -67,6 +58,11 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 //
 //    private Animation animationOut;
 
+    private FragmentBottom01 mFragmentBottom01;
+    private FragmentBottom02 mFragmentBottom02;
+    private FragmentBottom03 mFragmentBottom03;
+    private FragmentBottom04 mFragmentBottom04;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +70,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         initView();
 
-        replaceFragment(new fragmentBottom01());
+        setBottomFragment(0);
 
     }
 
@@ -101,18 +97,13 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "我")/*.setActiveColorResource(R.color.yellow)*/)
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .initialise();
+        bottomNavigationView.setTabSelectedListener(this);
 
         //animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
         //animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
 
-    }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fl_main_container, fragment);
-        //transaction.addToBackStack(null);
-        transaction.commit();
+
     }
 
     @Override
@@ -150,7 +141,106 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         return true;
     }
 
-//    public void setBottomVisibility(boolean isShow) {
+    public void btnClick(View view) {
+        Toast.makeText(this,"123",Toast.LENGTH_SHORT).show();
+    }
+
+    public TabLayout getTabLayout() {
+        return tabLayout;
+    }
+
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fl_main_container, fragment);
+        //transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+
+    private void setBottomFragment(int index) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        hideAllBottomFragment(transaction);
+
+        switch (index) {
+            case 0:
+                if (mFragmentBottom01 == null) {
+                    mFragmentBottom01 = new FragmentBottom01();
+                    transaction.add(R.id.fl_main_container, mFragmentBottom01);
+                    transaction.addToBackStack(null);
+                } else {
+                    transaction.show(mFragmentBottom01);
+                }
+                break;
+            case 1:
+                if (mFragmentBottom02 == null) {
+                    mFragmentBottom02 = new FragmentBottom02();
+                    transaction.add(R.id.fl_main_container, mFragmentBottom02);
+                    transaction.addToBackStack(null);
+                } else {
+                    transaction.show(mFragmentBottom02);
+                }
+                break;
+            case 2:
+                if (mFragmentBottom03 == null) {
+                    mFragmentBottom03 = new FragmentBottom03();
+                    transaction.add(R.id.fl_main_container, mFragmentBottom03);
+                    transaction.addToBackStack(null);
+                } else {
+                    transaction.show(mFragmentBottom03);
+                }
+                break;
+            case 3:
+                if (mFragmentBottom04 == null) {
+                    mFragmentBottom04 = new FragmentBottom04();
+                    transaction.add(R.id.fl_main_container, mFragmentBottom04);
+                    transaction.addToBackStack(null);
+                } else {
+                    transaction.show(mFragmentBottom04);
+                }
+                break;
+            default:
+                break;
+        }
+        transaction.commit();
+    }
+
+    private void hideAllBottomFragment(FragmentTransaction transaction) {
+
+        if (mFragmentBottom01 != null) {
+            transaction.hide(mFragmentBottom01);
+        }
+        if (mFragmentBottom02 != null) {
+            transaction.hide(mFragmentBottom02);
+        }
+        if (mFragmentBottom03 != null) {
+            transaction.hide(mFragmentBottom03);
+        }
+        if (mFragmentBottom04 != null) {
+            transaction.hide(mFragmentBottom04);
+        }
+
+    }
+
+    @Override
+    public void onTabSelected(int position) {
+        setBottomFragment(position);
+    }
+
+    @Override
+    public void onTabUnselected(int position) {
+
+    }
+
+    @Override
+    public void onTabReselected(int position) {
+
+    }
+
+
+    //    public void setBottomVisibility(boolean isShow) {
 //
 //        if (isShow) {
 //
@@ -169,12 +259,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 //        }
 //    }
 
-    public void btnClick(View view) {
-        Toast.makeText(this,"123",Toast.LENGTH_SHORT).show();
-    }
 
-    public TabLayout getTabLayout() {
-        return tabLayout;
-    }
 
 }

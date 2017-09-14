@@ -5,4 +5,7 @@ package com.wuwei.magicbox.util;
  */
 
 public interface Consts {
+
+
+
 }

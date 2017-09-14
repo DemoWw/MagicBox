@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
  * Created by tarena on 2017/9/13.
  */
 
-public class fragmentBottom01 extends Fragment {
+public class FragmentBottom01 extends Fragment {
 
     @BindView(R.id.vp_bottom01)
     ViewPager viewPager;

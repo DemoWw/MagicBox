@@ -13,13 +13,13 @@ import com.wuwei.magicbox.magicbox.R;
  * Created by tarena on 2017/9/13.
  */
 
-public class fragmentBottom03 extends Fragment {
+public class FragmentBottom02 extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_bottom03, container, false);
+        View view = inflater.inflate(R.layout.fragment_bottom02, container, false);
 
         return view;
     }
