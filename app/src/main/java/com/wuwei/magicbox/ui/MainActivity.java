@@ -226,6 +226,30 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
     @Override
     public void onTabSelected(int position) {
+
+        switch (position) {
+            case 0:
+                toolbar.setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.VISIBLE);
+                break;
+            case 1:
+                toolbar.hideOverflowMenu();
+                toolbar.setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                toolbar.setVisibility(View.VISIBLE);
+                tabLayout.setVisibility(View.GONE);
+                break;
+            case 3:
+                if (toolbar.isOverflowMenuShowing()) {
+                    toolbar.setVisibility(View.GONE);
+                    tabLayout.setVisibility(View.GONE);
+                }
+                break;
+            default:
+                break;
+        }
         setBottomFragment(position);
     }
 
