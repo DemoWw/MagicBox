@@ -9,4 +9,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="bottom_tab1">首页</string>
+    <string name="bottom_tab2">资讯</string>
+    <string name="bottom_tab3">音乐</string>
+    <string name="bottom_tab4">我</string>
 </resources>

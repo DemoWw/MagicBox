@@ -7,28 +7,24 @@
         android:title="@string/menu_add"
         app:showAsAction="ifRoom"
         android:orderInCategory="80"
-
+        android:icon="@mipmap/ic_launcher"
         />
+
     <item
         android:id="@+id/action_add1"
         android:title="@string/menu_add"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:orderInCategory="80"
-
+        android:icon="@mipmap/ic_launcher"
         />
+
     <item
         android:id="@+id/action_add2"
         android:title="@string/menu_add"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:orderInCategory="80"
-
+        android:icon="@mipmap/ic_launcher"
         />
-    <item
-        android:id="@+id/action_add3"
-        android:title="@string/menu_add"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="80"
 
-        />
 
 </menu>

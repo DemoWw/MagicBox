@@ -11,6 +11,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -70,8 +71,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         initView();
 
-        setBottomFragment(0);
-
     }
 
     private void initView() {
@@ -91,10 +90,10 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        bottomNavigationView.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "首页"))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "资讯")/*.setActiveColorResource(R.color.colorAccent)*/)
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "音乐")/*.setActiveColorResource(R.color.colorPrimary)*/)
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, "我")/*.setActiveColorResource(R.color.yellow)*/)
+        bottomNavigationView.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab1)))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab2))/*.setActiveColorResource(R.color.colorAccent)*/)
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab3))/*.setActiveColorResource(R.color.colorPrimary)*/)
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab4))/*.setActiveColorResource(R.color.yellow)*/)
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .initialise();
         bottomNavigationView.setTabSelectedListener(this);
@@ -102,7 +101,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         //animationIn = AnimationUtils.loadAnimation(this, R.anim.in_from_down);
         //animationOut = AnimationUtils.loadAnimation(this, R.anim.out_to_down);
 
-
+        bottomNavigationView.selectTab(0);
 
     }
 
@@ -204,6 +203,11 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
             default:
                 break;
         }
+
+        //transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+
         transaction.commit();
     }
 
@@ -229,19 +233,32 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         switch (position) {
             case 0:
+
+                if (toolbar.getMenu().size() > 2) {
+                    toolbar.getMenu().getItem(1).setVisible(true);
+                    toolbar.getMenu().getItem(2).setVisible(true);
+                }
+                toolbar.setTitle(getString(R.string.bottom_tab1));
                 toolbar.setVisibility(View.VISIBLE);
                 tabLayout.setVisibility(View.VISIBLE);
                 break;
             case 1:
-                toolbar.hideOverflowMenu();
+                toolbar.getMenu().getItem(1).setVisible(false);
+                toolbar.getMenu().getItem(2).setVisible(false);
+                //toolbar.dismissPopupMenus();
+                //toolbar.inflateMenu(R.menu.menu_bottom);
+                //toolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round));
+                toolbar.setTitle(getString(R.string.bottom_tab2));
                 toolbar.setVisibility(View.VISIBLE);
                 tabLayout.setVisibility(View.VISIBLE);
                 break;
             case 2:
+                toolbar.setTitle(getString(R.string.bottom_tab3));
                 toolbar.setVisibility(View.VISIBLE);
                 tabLayout.setVisibility(View.GONE);
                 break;
             case 3:
+                toolbar.setTitle(getString(R.string.bottom_tab4));
                 if (toolbar.isOverflowMenuShowing()) {
                     toolbar.setVisibility(View.GONE);
                     tabLayout.setVisibility(View.GONE);
