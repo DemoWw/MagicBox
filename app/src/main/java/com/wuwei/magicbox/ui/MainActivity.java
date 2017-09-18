@@ -1,7 +1,5 @@
 package com.wuwei.magicbox.ui;
 
-import android.app.Activity;
-import android.app.Service;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
@@ -11,7 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
@@ -38,7 +36,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     CoordinatorLayout coordinatorLayout;
 
     @BindView(R.id.tab_layout)
-    TabLayout tabLayout;
+    TabLayout mTabLayout;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -76,9 +74,9 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     private void initView() {
         // actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00ff00")));
 
-        tabLayout.addTab(tabLayout.newTab());
-        tabLayout.addTab(tabLayout.newTab());
-        tabLayout.addTab(tabLayout.newTab());
+        mTabLayout.addTab(mTabLayout.newTab());
+        mTabLayout.addTab(mTabLayout.newTab());
+        mTabLayout.addTab(mTabLayout.newTab());
 
         toolbar.setOnMenuItemClickListener(this);
 
@@ -145,7 +143,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     }
 
     public TabLayout getTabLayout() {
-        return tabLayout;
+        return mTabLayout;
     }
 
 
@@ -233,16 +231,21 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         switch (position) {
             case 0:
-
+                if (mFragmentBottom01 != null) {
+                    bindTabLayout(mFragmentBottom01.getViewPager(), mTabLayout, mFragmentBottom01.getTabNames(), TabLayout.MODE_SCROLLABLE);
+                }
                 if (toolbar.getMenu().size() > 2) {
                     toolbar.getMenu().getItem(1).setVisible(true);
                     toolbar.getMenu().getItem(2).setVisible(true);
                 }
                 toolbar.setTitle(getString(R.string.bottom_tab1));
                 toolbar.setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.VISIBLE);
+                mTabLayout.setVisibility(View.VISIBLE);
                 break;
             case 1:
+                if (mFragmentBottom02 != null) {
+                    bindTabLayout(mFragmentBottom02.getViewPager(), mTabLayout, mFragmentBottom02.getTabNames(), TabLayout.MODE_SCROLLABLE);
+                }
                 toolbar.getMenu().getItem(1).setVisible(false);
                 toolbar.getMenu().getItem(2).setVisible(false);
                 //toolbar.dismissPopupMenus();
@@ -250,18 +253,18 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 //toolbar.setNavigationIcon(ContextCompat.getDrawable(this, R.mipmap.ic_launcher_round));
                 toolbar.setTitle(getString(R.string.bottom_tab2));
                 toolbar.setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.VISIBLE);
+                mTabLayout.setVisibility(View.VISIBLE);
                 break;
             case 2:
                 toolbar.setTitle(getString(R.string.bottom_tab3));
                 toolbar.setVisibility(View.VISIBLE);
-                tabLayout.setVisibility(View.GONE);
+                mTabLayout.setVisibility(View.GONE);
                 break;
             case 3:
                 toolbar.setTitle(getString(R.string.bottom_tab4));
                 if (toolbar.isOverflowMenuShowing()) {
                     toolbar.setVisibility(View.GONE);
-                    tabLayout.setVisibility(View.GONE);
+                    mTabLayout.setVisibility(View.GONE);
                 }
                 break;
             default:
@@ -278,6 +281,36 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     @Override
     public void onTabReselected(int position) {
 
+    }
+
+    public void bindTabLayout(ViewPager viewPager, TabLayout tabLayout, String[] tag, @TabLayout.Mode int mode) {
+
+        if (tabLayout == null || viewPager == null || tag.length == 0) {
+            return;
+        }
+
+        tabLayout.setupWithViewPager(viewPager);
+
+        TabLayout.Tab tab;
+        int len = tabLayout.getTabCount() > tag.length ? tabLayout.getTabCount() : tag.length;
+        for (int i = 0; i < len; i++) {
+            tab = tabLayout.getTabAt(i);
+            if (i < tag.length) {
+                if (tab == null) {
+                    tabLayout.addTab(tabLayout.newTab(), i);
+                    tab = tabLayout.getTabAt(i);
+                }
+                if (tab != null) {
+                    tab.setText(tag[i]);
+                }
+            } else {
+                if (tab != null) {
+                    tabLayout.removeTab(tab);
+                }
+            }
+        }
+
+        tabLayout.setTabMode(mode);
     }
 
 

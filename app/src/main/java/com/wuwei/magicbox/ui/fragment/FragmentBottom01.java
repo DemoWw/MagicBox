@@ -17,6 +17,7 @@ import com.wuwei.magicbox.ui.MainActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 /**
  * Created by tarena on 2017/9/13.
  */
@@ -24,11 +25,13 @@ import butterknife.ButterKnife;
 public class FragmentBottom01 extends Fragment {
 
     @BindView(R.id.vp_bottom01)
-    ViewPager viewPager;
+    ViewPager mViewPager;
 
     private MainActivity mActivity;
 
     private TabLayout mTabLayout;
+
+    private String[] tabNames = new String[]{"首页", "Android", "IOS", "Windows"};
 
     @Nullable
     @Override
@@ -41,19 +44,9 @@ public class FragmentBottom01 extends Fragment {
         mActivity = (MainActivity) getActivity();
         mTabLayout = mActivity.getTabLayout();
 
-        viewPager.setAdapter(new InnerFragmentPagerAdapter(getActivity().getSupportFragmentManager()));
-        mTabLayout.setupWithViewPager(viewPager);
+        mViewPager.setAdapter(new InnerFragmentPagerAdapter(getActivity().getSupportFragmentManager()));
 
-        TabLayout.Tab tab0 = mTabLayout.getTabAt(0);
-        TabLayout.Tab tab1 = mTabLayout.getTabAt(1);
-        TabLayout.Tab tab2 = mTabLayout.getTabAt(2);
-
-        if (tab0 != null && tab1 != null && tab2 != null) {
-            tab0.setText("首页");
-            tab1.setText("Android");
-            tab2.setText("IOS");
-        }
-
+        mActivity.bindTabLayout(mViewPager, mTabLayout, tabNames, TabLayout.MODE_SCROLLABLE);
 
         return view;
     }
@@ -86,6 +79,14 @@ public class FragmentBottom01 extends Fragment {
         public int getCount() {
             return 3;
         }
+    }
+
+    public ViewPager getViewPager() {
+        return mViewPager;
+    }
+
+    public String[] getTabNames() {
+        return tabNames;
     }
 
 }
