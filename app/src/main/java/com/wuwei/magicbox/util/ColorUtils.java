@@ -1,7 +1,7 @@
 package com.wuwei.magicbox.util;
 
 /**
- * Created by tarena on 2017/9/5.
+ * Created by wuwei on 2017/9/5.
  */
 
 public class ColorUtils {

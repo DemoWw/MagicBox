@@ -25,9 +25,13 @@ import com.wuwei.magicbox.ui.fragment.FragmentBottom01;
 import com.wuwei.magicbox.ui.fragment.FragmentBottom02;
 import com.wuwei.magicbox.ui.fragment.FragmentBottom03;
 import com.wuwei.magicbox.ui.fragment.FragmentBottom04;
+import com.wuwei.magicbox.util.AppUtils;
 
 import butterknife.BindView;
 
+/**
+ * Created by wuwei on 2017/9/4.
+ */
 
 public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener,
         NavigationView.OnNavigationItemSelectedListener, BottomNavigationBar.OnTabSelectedListener {
@@ -88,10 +92,14 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        bottomNavigationView.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab1)))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab2))/*.setActiveColorResource(R.color.colorAccent)*/)
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab3))/*.setActiveColorResource(R.color.colorPrimary)*/)
-                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab4))/*.setActiveColorResource(R.color.yellow)*/)
+        bottomNavigationView.addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab1))
+                        .setActiveColor(AppUtils.getThemeColor(this, R.attr.colorPrimary)))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab2))
+                        .setActiveColor(AppUtils.getThemeColor(this, R.attr.colorPrimary)))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab3))
+                        .setActiveColor(AppUtils.getThemeColor(this, R.attr.colorPrimary)))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_launcher_round, getString(R.string.bottom_tab4))
+                        .setActiveColor(AppUtils.getThemeColor(this, R.attr.colorPrimary)))
                 .setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC)
                 .initialise();
         bottomNavigationView.setTabSelectedListener(this);
@@ -232,7 +240,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
         switch (position) {
             case 0:
                 if (mFragmentBottom01 != null) {
-                    bindTabLayout(mFragmentBottom01.getViewPager(), mTabLayout, mFragmentBottom01.getTabNames(), TabLayout.MODE_SCROLLABLE);
+                    AppUtils.bindTabLayout(mFragmentBottom01.getViewPager(), mTabLayout, mFragmentBottom01.getTabNames(), TabLayout.MODE_SCROLLABLE);
                 }
                 if (toolbar.getMenu().size() > 2) {
                     toolbar.getMenu().getItem(1).setVisible(true);
@@ -244,7 +252,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 break;
             case 1:
                 if (mFragmentBottom02 != null) {
-                    bindTabLayout(mFragmentBottom02.getViewPager(), mTabLayout, mFragmentBottom02.getTabNames(), TabLayout.MODE_SCROLLABLE);
+                    AppUtils.bindTabLayout(mFragmentBottom02.getViewPager(), mTabLayout, mFragmentBottom02.getTabNames(), TabLayout.MODE_SCROLLABLE);
                 }
                 toolbar.getMenu().getItem(1).setVisible(false);
                 toolbar.getMenu().getItem(2).setVisible(false);
@@ -281,36 +289,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
     @Override
     public void onTabReselected(int position) {
 
-    }
-
-    public void bindTabLayout(ViewPager viewPager, TabLayout tabLayout, String[] tag, @TabLayout.Mode int mode) {
-
-        if (tabLayout == null || viewPager == null || tag.length == 0) {
-            return;
-        }
-
-        tabLayout.setupWithViewPager(viewPager);
-
-        TabLayout.Tab tab;
-        int len = tabLayout.getTabCount() > tag.length ? tabLayout.getTabCount() : tag.length;
-        for (int i = 0; i < len; i++) {
-            tab = tabLayout.getTabAt(i);
-            if (i < tag.length) {
-                if (tab == null) {
-                    tabLayout.addTab(tabLayout.newTab(), i);
-                    tab = tabLayout.getTabAt(i);
-                }
-                if (tab != null) {
-                    tab.setText(tag[i]);
-                }
-            } else {
-                if (tab != null) {
-                    tabLayout.removeTab(tab);
-                }
-            }
-        }
-
-        tabLayout.setTabMode(mode);
     }
 
 

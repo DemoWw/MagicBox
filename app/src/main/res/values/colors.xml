@@ -3,11 +3,20 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorControlHighlight">#fffea50b</color>
+
     <color name="yellow">#FFFF00</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorSecondary">#55FFFFFF</color>
 
     <color name="itemTextColor">#88000000</color>
     <color name="transparent">#00000000</color>
+    
+    <color name="lightBlueColorPrimary">#5677FC</color>
+    <color name="lightBlueColorPrimaryDark">#455EDE</color>
+    <color name="lightBlueColorAccent">#FF4081</color>
 
+    <color name="blueGreyColorPrimary">#607D8B</color>
+    <color name="blueGreyColorPrimaryDark">#455A64</color>
+    <color name="blueGreyColorAccent">#FF4081</color>
 </resources>

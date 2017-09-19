@@ -14,12 +14,13 @@ import android.view.ViewGroup;
 
 import com.wuwei.magicbox.magicbox.R;
 import com.wuwei.magicbox.ui.MainActivity;
+import com.wuwei.magicbox.util.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by tarena on 2017/9/13.
+ * Created by wuwei on 2017/9/13.
  */
 
 public class FragmentBottom02 extends Fragment {
@@ -46,7 +47,7 @@ public class FragmentBottom02 extends Fragment {
 
         mViewPager.setAdapter(new InnerFragmentPagerAdapter(mActivity.getSupportFragmentManager()));
 
-        mActivity.bindTabLayout(mViewPager, mTabLayout, tabNames, TabLayout.MODE_SCROLLABLE);
+        AppUtils.bindTabLayout(mViewPager, mTabLayout, tabNames, TabLayout.MODE_SCROLLABLE);
 
         return view;
     }

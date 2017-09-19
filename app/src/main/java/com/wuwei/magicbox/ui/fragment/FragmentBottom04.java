@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.wuwei.magicbox.magicbox.R;
 
 /**
- * Created by tarena on 2017/9/13.
+ * Created by wuwei on 2017/9/13.
  */
 
 public class FragmentBottom04 extends Fragment {

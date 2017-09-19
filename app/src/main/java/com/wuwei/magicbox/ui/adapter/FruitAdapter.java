@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * Created by pjy on 2017/8/23.
+ * Created by wuwei on 2017/8/23.
  */
 
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitViewHolder> {

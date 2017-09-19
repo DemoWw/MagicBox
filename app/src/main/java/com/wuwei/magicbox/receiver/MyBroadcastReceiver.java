@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.wuwei.magicbox.util.LogUtils;
 
 /**
- * Created by tarena on 2017/9/11.
+ * Created by wuwei on 2017/9/11.
  */
 
 public class MyBroadcastReceiver extends BroadcastReceiver {

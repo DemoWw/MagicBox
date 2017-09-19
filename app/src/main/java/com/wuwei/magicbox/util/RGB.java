@@ -5,7 +5,7 @@ package com.wuwei.magicbox.util;
 /**
  * RGB颜色
  *
- * Created by tarena on 2017/9/5.
+ * Created by wuwei on 2017/9/5.
  */
 
 public class RGB {

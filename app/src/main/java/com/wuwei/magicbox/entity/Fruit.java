@@ -1,7 +1,7 @@
 package com.wuwei.magicbox.entity;
 
 /**
- * Created by pjy on 2017/8/23.
+ * Created by wuwei on 2017/8/23.
  */
 
 public class Fruit {

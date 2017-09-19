@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import com.wuwei.magicbox.util.LogUtils;
 
 /**
- * Created by tarena on 2017/9/8.
+ * Created by wuwei on 2017/9/8.
  */
 
 public abstract class RecyclerViewScrollDetector extends RecyclerView.OnScrollListener {

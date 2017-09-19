@@ -3,15 +3,17 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/blueGreyColorPrimary</item>
+        <item name="colorPrimaryDark">@color/blueGreyColorPrimaryDark</item>
+        <item name="colorAccent">@color/blueGreyColorAccent</item>
+
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
         <!--<item name="android:windowBackground">@color/transparent</item>-->
         <item name="android:windowIsTranslucent">false</item>
+        <item name="android:colorControlHighlight">?attr/colorControlHighlight</item>
     </style>
 
     <!-- 用于修改TabLayout默认的字体大小写显示 -->
