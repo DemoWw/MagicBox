@@ -27,4 +27,21 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="button_ripple_theme" parent="@style/ThemeOverlay.AppCompat">
+
+        <!-- 此颜色值为it之家客户端使用的按钮点击涟漪颜色 -->
+        <!--<item name="colorControlHighlight">#90cfd8dc</item>-->
+
+        <!-- 此属性必须加前缀"android:",否则系统无法识别，导致该属性无效 -->
+        <item name="android:colorControlHighlight">?attr/colorControlHighlight</item>
+
+        <item name="android:colorButtonNormal">@color/pureWhite</item>
+    </style>
+
+    <!-- 此主题借鉴it之家，作用是处理button背景及点击效果，目前没有使用 -->
+    <style name="button_ripple_style" parent="@style/Base.Widget.AppCompat.Button">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Widget.Button.Colored</item>
+        <item name="android:background">@drawable/md_btn_background</item>
+    </style>
+
 </resources>

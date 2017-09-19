@@ -15,4 +15,7 @@
     <string name="bottom_tab3">音乐</string>
     <string name="bottom_tab4">我</string>
 
+    <string name="welcome_to_magic_box">欢迎开启魔盒之旅！</string>
+    <string name="login_now">现在登录</string>
+
 </resources>

@@ -9,6 +9,8 @@
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorSecondary">#55FFFFFF</color>
 
+    <color name="pureWhite">#FFFFFF</color>
+
     <color name="itemTextColor">#88000000</color>
     <color name="transparent">#00000000</color>
     
@@ -19,4 +21,7 @@
     <color name="blueGreyColorPrimary">#607D8B</color>
     <color name="blueGreyColorPrimaryDark">#455A64</color>
     <color name="blueGreyColorAccent">#FF4081</color>
+
+    <color name="core_text">#ff333333</color>
+    <color name="core_text_night">#ff999999</color>
 </resources>

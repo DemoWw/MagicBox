@@ -174,7 +174,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 if (mFragmentBottom01 == null) {
                     mFragmentBottom01 = new FragmentBottom01();
                     transaction.add(R.id.fl_main_container, mFragmentBottom01);
-                    transaction.addToBackStack(null);
+                    //transaction.addToBackStack(null);
                 } else {
                     transaction.show(mFragmentBottom01);
                 }
@@ -183,7 +183,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 if (mFragmentBottom02 == null) {
                     mFragmentBottom02 = new FragmentBottom02();
                     transaction.add(R.id.fl_main_container, mFragmentBottom02);
-                    transaction.addToBackStack(null);
+                    //transaction.addToBackStack(null);
                 } else {
                     transaction.show(mFragmentBottom02);
                 }
@@ -192,7 +192,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 if (mFragmentBottom03 == null) {
                     mFragmentBottom03 = new FragmentBottom03();
                     transaction.add(R.id.fl_main_container, mFragmentBottom03);
-                    transaction.addToBackStack(null);
+                    //transaction.addToBackStack(null);
                 } else {
                     transaction.show(mFragmentBottom03);
                 }
@@ -201,7 +201,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 if (mFragmentBottom04 == null) {
                     mFragmentBottom04 = new FragmentBottom04();
                     transaction.add(R.id.fl_main_container, mFragmentBottom04);
-                    transaction.addToBackStack(null);
+                    //transaction.addToBackStack(null);
                 } else {
                     transaction.show(mFragmentBottom04);
                 }
@@ -212,7 +212,7 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
 
         //transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
 
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 
         transaction.commit();
     }
@@ -270,10 +270,8 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 break;
             case 3:
                 toolbar.setTitle(getString(R.string.bottom_tab4));
-                if (toolbar.isOverflowMenuShowing()) {
-                    toolbar.setVisibility(View.GONE);
-                    mTabLayout.setVisibility(View.GONE);
-                }
+                toolbar.setVisibility(View.GONE);
+                mTabLayout.setVisibility(View.GONE);
                 break;
             default:
                 break;
