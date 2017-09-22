@@ -10,4 +10,6 @@
     <dimen name="card_corners_radius">2dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
     <dimen name="card_margin_left_right">8dp</dimen>
+
+    <dimen name="line_divider_height">0.5dp</dimen>
 </resources>

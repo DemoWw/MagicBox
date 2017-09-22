@@ -269,7 +269,6 @@ public class MainActivity extends BaseActivity implements Toolbar.OnMenuItemClic
                 mTabLayout.setVisibility(View.GONE);
                 break;
             case 3:
-                toolbar.setTitle(getString(R.string.bottom_tab4));
                 toolbar.setVisibility(View.GONE);
                 mTabLayout.setVisibility(View.GONE);
                 break;

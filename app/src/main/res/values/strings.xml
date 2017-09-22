@@ -17,5 +17,6 @@
 
     <string name="welcome_to_magic_box">欢迎开启魔盒之旅！</string>
     <string name="login_now">现在登录</string>
+    <string name="register_fast">快速注册</string>
 
 </resources>

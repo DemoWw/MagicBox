@@ -24,4 +24,5 @@
 
     <color name="core_text">#ff333333</color>
     <color name="core_text_night">#ff999999</color>
+    <color name="core_line">#ffeeeeee</color>
 </resources>
